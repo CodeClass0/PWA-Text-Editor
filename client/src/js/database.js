@@ -15,13 +15,13 @@ const initdb = async () =>
 // TODO: Add logic to a method that accepts some content and adds it to the database
 export const putDb = async (content) => {
   //Database and version
-  const textDB = await openDB('text', 1);
+  const jateDB = await openDB('jate', 1);
 
   //Create transaction and specify db and priveledge
-  const tx = textDB.transaction('text', 'readwrite');
+  const tx = jateDB.transaction('jate', 'readwrite');
 
   //open object store
-  const store = tx.objectStore('text');
+  const store = tx.objectStore('jate');
 
   //pass content
   const request = store.put({ id: 1, value: content});
@@ -37,13 +37,13 @@ export const getDb = async () => {
   console.log('GET from the database');
 
   // Create a connection to the database database and version we want to use.
-  const textDB = await openDB('text', 1);
+  const jateDB = await openDB('jate', 1);
 
   // Create a new transaction and specify the database and data privileges.
-  const tx = textDB.transaction('text', 'readonly');
+  const tx = jateDB.transaction('jate', 'readonly');
 
   // Open up the desired object store.
-  const store = tx.objectStore('text');
+  const store = tx.objectStore('jate');
 
   // Use the .getAll() method to get all data in the database.
   const request = store.getAll();
